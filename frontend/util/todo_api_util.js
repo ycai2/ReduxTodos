@@ -3,6 +3,16 @@ export const fetchTodos = (success, error) => {
     method: 'GET',
     url: 'api/todos',
     success,
-    error
+    error,
+  });
+};
+
+export const createTodo = (todo, success, error) => {
+  $.ajax({
+    method: 'POST',
+    url: 'api/todos',
+    data: todo,
+    success,
+    error,
   });
 };
