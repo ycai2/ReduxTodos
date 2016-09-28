@@ -3,4 +3,4 @@ const allTodos = (state) => {
   return todoIds.map(id => state.todos[id]);
 };
 
-export default allTodos;
+export default allTodos; 

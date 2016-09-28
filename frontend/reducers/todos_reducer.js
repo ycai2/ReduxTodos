@@ -1,4 +1,4 @@
-// import { stuff } from '../actions/something';
+import { RECEIVE_TODOS } from '../actions/todo_actions';
 
 const defaultState = {
   "1": {
@@ -19,6 +19,11 @@ const TodosReducer = (state = defaultState, action) => {
   Object.freeze(state);
 
   switch (action.type) {
+    case RECEIVE_TODOS: {
+      let newState = {};
+      action.todos.forEach(todo => newState[todo.id] = todo);
+      return newState;
+    }
     default: {
       return state;
     }
