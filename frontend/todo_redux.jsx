@@ -4,6 +4,7 @@ import { fetchTodos } from './util/todo_api_util';
 import configureStore from './store/store';
 import allTodos from './reducers/selector';
 import { requestTodos } from './actions/todo_actions';
+import Root from './components/root';
 
 document.addEventListener('DOMContentLoaded', () => {
   window.fetchTodos = fetchTodos;
@@ -11,6 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.store = store;
   window.allTodos = allTodos;
   window.requestTodos = requestTodos;
-  
-  ReactDOM.render((<h1>Todos App</h1>), document.getElementById('content'));
+
+  ReactDOM.render(<Root store={store} />, document.getElementById('content'));
 });
