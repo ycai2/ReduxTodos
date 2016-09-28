@@ -1,10 +1,13 @@
 import {
   REQUEST_TODOS,
   CREATE_TODO,
+  UPDATE_TODO,
+  DESTROY_TODO,
+  removeTodo,
   receiveTodos,
   receiveTodo
 } from '../actions/todo_actions';
-import { fetchTodos, createTodo } from '../util/todo_api_util';
+import { fetchTodos, createTodo, updateTodo, destroyTodo } from '../util/todo_api_util';
 
 
 const TodoMiddleware = ({ dispatch }) => (next) => (action) => {
@@ -19,6 +22,18 @@ const TodoMiddleware = ({ dispatch }) => (next) => (action) => {
       const success = data => dispatch(receiveTodo(data));
       const error = e => console.log(e);
       createTodo(action.todo, success, error);
+      break;
+    }
+    case UPDATE_TODO: {
+      const success = data => dispatch(receiveTodo(data));
+      const error = e => console.log(e);
+      updateTodo(action.todo, success, error);
+      break;
+    }
+    case DESTROY_TODO: {
+      const success = data => dispatch(removeTodo(data));
+      const error = e => console.log(e);
+      destroyTodo(action.todo, success, error);
       break;
     }
     default: {

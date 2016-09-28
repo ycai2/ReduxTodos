@@ -1,5 +1,4 @@
 import React from 'react';
-import merge from 'lodash/merge';
 
 class TodoForm extends React.Component {
   constructor(props) {
@@ -21,12 +20,10 @@ class TodoForm extends React.Component {
     );
   }
 
-  createTodo(data) {
-    return (event => {
-      event.preventDefault();
-      this.props.createTodo(data);
-      this.state = { title: "", body: "" };
-    });
+  createTodo(e) {
+    e.preventDefault();
+    this.props.createTodo(this.state);
+    // this.state = { title: "", body: "" };
   }
 
   render() {
@@ -38,7 +35,7 @@ class TodoForm extends React.Component {
     };
 
     return (
-      <form onSubmit={this.createTodo(data)}>
+      <form onSubmit={this.createTodo}>
         <label htmlFor="title">Title</label>
         <input
           id="title"
